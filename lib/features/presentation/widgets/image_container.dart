@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meet_n_train_app/core/utils/color_manager.dart';
+import 'package:meet_n_train_app/core/utils/font_manager.dart';
 import 'package:meet_n_train_app/features/domain/entities/tag_entity.dart';
 
 
@@ -58,7 +59,7 @@ class ImageContainer extends StatelessWidget {
                   const SizedBox(width: 4),
                   Text(
                     tag.title,
-                    style: TextStyle(color:  AppColor.black, fontSize: 14),
+                    style: TextStyle(color:  AppColor.black, fontSize: 14,fontFamily: FontConstants.fontFamily,),
                   )
                 ],
               ),
@@ -79,13 +80,13 @@ class ImageContainer extends StatelessWidget {
                     ? Center(
                       child: Text(
                           'UnLimited spots',
-                          style: TextStyle(color: AppColor.primaryColor, fontSize: 10),
+                          style: TextStyle(color: AppColor.primaryColor, fontSize: 10,fontFamily: FontConstants.fontFamily,),
                         ),
                     )
                     : Center(
                       child: Text(
                           '$spotsLeft Spots left',
-                          style: TextStyle(color: AppColor.primaryColor, fontSize: 10),
+                          style: TextStyle(fontFamily: FontConstants.fontFamily,color: AppColor.primaryColor, fontSize: 10),
                         ),
                     ),
               ),
