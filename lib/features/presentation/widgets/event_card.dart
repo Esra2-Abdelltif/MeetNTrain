@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:meet_n_train_app/core/utils/color_manager.dart';
+import 'package:meet_n_train_app/core/utils/font_manager.dart';
 import 'package:meet_n_train_app/features/domain/entities/event_entity.dart';
 import 'package:meet_n_train_app/features/presentation/widgets/dollar_container.dart';
 import 'package:meet_n_train_app/features/presentation/widgets/image_container.dart';
@@ -18,7 +19,7 @@ class EventCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(12)),
           child: Container(
             width: MediaQuery.of(context).size.width * 0.75,
-            height: MediaQuery.of(context).size.height * 0.41,
+            height: MediaQuery.of(context).size.height * 0.42,
             decoration:
                 BoxDecoration(borderRadius: BorderRadius.circular(12)),
             child: Padding(
@@ -36,25 +37,22 @@ class EventCard extends StatelessWidget {
                   DateFormat(
                     'EEEE dd MMM  yyyy . hh:mm a',
                   ).format(DateTime.parse(event.date)),
-                  style: TextStyle(color: AppColor.grey,fontSize: 12),
+                  style: TextStyle(color: AppColor.grey,fontFamily: FontConstants.fontFamily,fontSize: 12),
                 ),
-                    const SizedBox(
-                      height:8,
-                    ),
+
                 Text(
                   event.title,
-                  style: TextStyle(color: AppColor.black, fontSize: 18),
+                  style: TextStyle(color: AppColor.black, fontSize: 18,fontFamily: FontConstants.fontFamily,),
                 ),
-                    const SizedBox(
-                      height:8,
-                    ),
+
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.6,
                   child: Text(
                     event.placeName,
-                    style:  TextStyle(color: AppColor.grey, fontSize: 10),
+                    style:  TextStyle(color: AppColor.grey,fontFamily: FontConstants.fontFamily, fontSize: 10),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
+
                   ),
                 ),
                 Padding(
@@ -63,7 +61,7 @@ class EventCard extends StatelessWidget {
                     children: [
                       Text(
                         '${DateTime.parse(event.finishDate).difference(DateTime.now()).inDays} days left',
-                        style: TextStyle(color: AppColor.primaryColor, fontSize: 10),
+                        style: TextStyle(fontFamily: FontConstants.fontFamily,color: AppColor.primaryColor, fontSize: 10),
                       ),
                       const Spacer(),
                       event.paymentMethod == 'CASH'
@@ -89,7 +87,7 @@ class EventCard extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: Text(
                     event.price == 0 ? 'Free' : 'AED ${event.price}',
-                    style:TextStyle(color: AppColor.primaryColor, fontSize: 16)
+                    style:TextStyle(color: AppColor.primaryColor, fontSize: 16,fontFamily: FontConstants.fontFamily,)
                   ),
                 ),
                 

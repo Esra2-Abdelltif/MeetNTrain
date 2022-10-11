@@ -17,7 +17,7 @@ ThemeData lightthemes = ThemeData(
     titleTextStyle: const TextStyle(
       color:Colors.black,
       fontSize: 16,
-      fontWeight: FontWeight.w300,
+      fontWeight: FontWeight.w600,
       fontFamily: FontConstants.fontFamily
     ),
     systemOverlayStyle: SystemUiOverlayStyle(
@@ -33,6 +33,7 @@ ThemeData lightthemes = ThemeData(
   ),
 
   textTheme: const TextTheme(
+
     bodyText1: TextStyle(fontSize: 18, fontWeight: FontWeight.w700,color: Colors.black),
     bodyText2:  TextStyle(fontSize: 16, color: Colors.black),
     headline1:TextStyle(fontSize: 30, color: Colors.black54, fontWeight: FontWeight.w600,),

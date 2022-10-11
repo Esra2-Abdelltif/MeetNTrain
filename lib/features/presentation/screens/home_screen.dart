@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter/material.dart';
 import 'package:meet_n_train_app/core/utils/color_manager.dart';
+import 'package:meet_n_train_app/core/utils/font_manager.dart';
 import 'package:meet_n_train_app/core/utils/string_manager.dart';
 import 'package:meet_n_train_app/features/presentation/cubit/events_bloc.dart';
 import 'package:meet_n_train_app/features/presentation/cubit/events_state.dart';
@@ -28,11 +29,11 @@ class HomeScreen extends StatelessWidget {
                         color: AppColor.white,
                         shape: BoxShape.circle,
                         border: Border.all(
-                          width: 2,
+                          width: 1,
                           color: AppColor.black,
                           style: BorderStyle.solid,
                         )),
-                    child: Icon(Icons.arrow_back_rounded)),
+                    child: Icon(Icons.arrow_back_rounded,)),
               ),
             ),
             body: state is EventsStateLoaded
@@ -49,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                             SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.8,
                                 height:
-                                    MediaQuery.of(context).size.height * 0.06,
+                                    MediaQuery.of(context).size.height * 0.09,
                                 child: Row(
                                   children: [
                                     Container(
@@ -79,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                                           0.4,
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.08,
+                                              .08,
                                       child: Row(
                                         children: [
                                           Text(
@@ -87,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                                               cubit.showedDate!,
                                             ),
                                             style: TextStyle(
-                                                color: AppColor.black,
+                                                color: AppColor.black, fontFamily: FontConstants.fontFamily,
                                                 fontSize: 30),
                                           ),
                                           Padding(
@@ -103,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                                                   ),
                                                   style: TextStyle(
                                                       color: AppColor
-                                                          .grey,
+                                                          .grey,fontFamily: FontConstants.fontFamily,
                                                       fontSize: 15),
                                                 ),
                                                 Text(
@@ -111,7 +112,7 @@ class HomeScreen extends StatelessWidget {
                                                     cubit.showedDate!,
                                                   ),
                                                   style: TextStyle(
-                                                      color: AppColor.black,
+                                                      color: AppColor.black,fontFamily: FontConstants.fontFamily,
                                                       fontSize: 15),
                                                 ),
                                               ],

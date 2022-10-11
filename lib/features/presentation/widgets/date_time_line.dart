@@ -1,3 +1,4 @@
+import 'package:meet_n_train_app/core/utils/font_manager.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -40,12 +41,12 @@ class DateTimeLine extends StatelessWidget {
                       Text(
                         DateFormat('dd')
                             .format(DateTime.parse(cubit.eventsList[index])),
-                        style: TextStyle( color: AppColor.white, fontSize: 10),
+                        style: TextStyle( color: AppColor.white, fontSize: 10,fontFamily: FontConstants.fontFamily,),
                       ),
                       Text(
                         DateFormat('EEE')
                             .format(DateTime.parse(cubit.eventsList[index])),
-                        style: TextStyle( color: AppColor.white, fontSize: 10)
+                        style: TextStyle( color: AppColor.white, fontSize: 10,fontFamily: FontConstants.fontFamily,)
                       ),
                     ],
                   ),
