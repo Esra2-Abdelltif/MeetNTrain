@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter/material.dart';
 import 'package:meet_n_train_app/core/utils/color_manager.dart';
 import 'package:meet_n_train_app/core/utils/font_manager.dart';
@@ -7,9 +6,7 @@ import 'package:meet_n_train_app/core/utils/string_manager.dart';
 import 'package:meet_n_train_app/features/presentation/cubit/events_bloc.dart';
 import 'package:meet_n_train_app/features/presentation/cubit/events_state.dart';
 import 'package:meet_n_train_app/features/presentation/widgets/event_list.dart';
-
 import 'package:intl/intl.dart';
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -19,6 +16,7 @@ class HomeScreen extends StatelessWidget {
         listener: (BuildContext context, EventsState state) {},
         builder: (BuildContext context, EventsState state) {
           EventsCubit cubit = EventsCubit.get(context);
+
           return Scaffold(
             appBar: AppBar(
               title: Text(AppStrings.schedule),
@@ -33,7 +31,9 @@ class HomeScreen extends StatelessWidget {
                           color: AppColor.black,
                           style: BorderStyle.solid,
                         )),
-                    child: Icon(Icons.arrow_back_rounded,)),
+                    child: Icon(
+                      Icons.arrow_back_rounded,
+                    )),
               ),
             ),
             body: state is EventsStateLoaded
@@ -49,16 +49,13 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.8,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.09,
+                                height: MediaQuery.of(context).size.height * 0.09,
                                 child: Row(
                                   children: [
                                     Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.1,
+                                      width: MediaQuery.of(context).size.width * 0.1,
                                       height:
-                                          MediaQuery.of(context).size.height *
-                                              0.05,
+                                          MediaQuery.of(context).size.height * 0.05,
                                       decoration: BoxDecoration(
                                           border: Border.all(
                                             color: AppColor.primaryColor,
@@ -76,19 +73,17 @@ class HomeScreen extends StatelessWidget {
                                       width: 12,
                                     ),
                                     SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.4,
+                                      width: MediaQuery.of(context).size.width * 0.4,
                                       height:
                                           MediaQuery.of(context).size.height *
                                               .08,
                                       child: Row(
                                         children: [
-                                          Text(
-                                            DateFormat('dd').format(
-                                              cubit.showedDate!,
-                                            ),
+                                          Text(cubit.showedDate == null ?  DateFormat('dd').format(DateTime.now()):  DateFormat('dd').format(cubit.showedDate!,),
                                             style: TextStyle(
-                                                color: AppColor.black, fontFamily: FontConstants.fontFamily,
+                                                color: AppColor.black,
+                                                fontFamily:
+                                                    FontConstants.fontFamily,
                                                 fontSize: 30),
                                           ),
                                           Padding(
@@ -99,20 +94,22 @@ class HomeScreen extends StatelessWidget {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
+                                                  cubit.showedDate == null ?  DateFormat('EEEE').format(DateTime.now()):
                                                   DateFormat('EEEE').format(
                                                     cubit.showedDate!,
                                                   ),
                                                   style: TextStyle(
-                                                      color: AppColor
-                                                          .grey,fontFamily: FontConstants.fontFamily,
+                                                      color: AppColor.grey,
+                                                      fontFamily: FontConstants
+                                                          .fontFamily,
                                                       fontSize: 15),
                                                 ),
-                                                Text(
-                                                  DateFormat('MMM yyyy').format(
-                                                    cubit.showedDate!,
-                                                  ),
+                                                Text(cubit.showedDate == null ? DateFormat('MMM yyyy').format(DateTime.now()):
+                                                  DateFormat('MMM yyyy').format(cubit.showedDate!,),
                                                   style: TextStyle(
-                                                      color: AppColor.black,fontFamily: FontConstants.fontFamily,
+                                                      color: AppColor.black,
+                                                      fontFamily: FontConstants
+                                                          .fontFamily,
                                                       fontSize: 15),
                                                 ),
                                               ],
@@ -123,6 +120,7 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                   ],
                                 )),
+
                             Expanded(
                                 child: EventsList(eventsList: state.event)),
                           ],

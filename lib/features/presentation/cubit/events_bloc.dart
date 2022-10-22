@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,34 +18,32 @@ class EventsCubit extends Cubit<EventsState> {
 
   static EventsCubit get(context) => BlocProvider.of(context);
 
-  static const _pageSize = 10;
   int currentPage = 1;
-  bool isLastPage = false;
-  List<String> eventsList = [];
-  List<Event> events = [];
+  bool isLastEvent = false;
+  List<String> eventsdDateList = [];
+  List<Event> eventsCardList = [];
   String currentDate = '';
-  DateTime? showedDate;
+  DateTime? showedDate ;
   Future<void> getEvent() async{
-      events = [];
+
+      eventsCardList = [];
       emit(EventstateLoading());
       String currentDate = DateFormat('ddMMMyyyy').format(DateTime.now());
-      showedDate = DateTime.now();
       final Either<Failure, List<Event>> eventList =
-      await getEventsUseCase(
-          currentDate: currentDate, pageNumber: 1);
-      eventList.fold((failure) =>
-              emit(EventstateError(_mapFailureToMsg(failure))),
+      await getEventsUseCase(EventParameters(pageNumber: currentPage ,currentDate:currentDate));
+      eventList.fold(
+              (failure) => emit(EventstateError(_mapFailureToMsg(failure))),
               (event) {
-                isLastPage = event.length == _pageSize;
-
-                if (isLastPage) {
+                isLastEvent = event.length == 10;
+                if (isLastEvent) {
                   currentPage++;
+                  eventsCardList.addAll(event);
+                  event.forEach((element) {
+                    eventsdDateList.add(element.date);
+                  });
+                  emit(EventsStateLoaded(event: event));
                 }
-            events.addAll(event);
-            event.forEach((element) {
-              eventsList.add(element.date);
-            });
-            emit(EventsStateLoaded(event: event));
+
           });
 
   }

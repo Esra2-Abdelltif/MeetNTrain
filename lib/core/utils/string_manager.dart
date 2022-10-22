@@ -4,6 +4,8 @@ class AppStrings {
   static const String unexpectedError = "Unexpected error , please try again later";
   static const String serverError = "Please try again later";
   static const String schedule = "Schedule";
+  static const String authorization = "Authorization";
+
 
 
 

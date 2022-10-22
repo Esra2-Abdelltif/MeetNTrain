@@ -108,8 +108,3 @@ class Event extends Equatable {
         ownerEarnings
       ];
 }
-
-
-
-
-

@@ -3,16 +3,16 @@ import 'package:meet_n_train_app/core/utils/color_manager.dart';
 import 'package:meet_n_train_app/core/utils/font_manager.dart';
 import 'package:meet_n_train_app/features/domain/entities/tag_entity.dart';
 
-
 class ImageContainer extends StatelessWidget {
   const ImageContainer(
       {Key? key,
       required this.imagePath,
       required this.tag,
-      required this.spotsLeft}): super(key: key);
+      required this.spots})
+      : super(key: key);
   final String imagePath;
   final Tag tag;
-  final int spotsLeft;
+  final int spots;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,6 @@ class ImageContainer extends StatelessWidget {
     return Stack(
       children: [
         Container(
-
           height: height,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
@@ -59,7 +58,11 @@ class ImageContainer extends StatelessWidget {
                   const SizedBox(width: 4),
                   Text(
                     tag.title,
-                    style: TextStyle(color:  AppColor.black, fontSize: 14,fontFamily: FontConstants.fontFamily,),
+                    style: TextStyle(
+                      color: AppColor.black,
+                      fontSize: 14,
+                      fontFamily: FontConstants.fontFamily,
+                    ),
                   )
                 ],
               ),
@@ -67,8 +70,8 @@ class ImageContainer extends StatelessWidget {
           ),
         ),
         Positioned(
-            bottom:10,
-            left:12,
+            bottom: 10,
+            left: 12,
             child: Container(
               height: 30,
               decoration: BoxDecoration(
@@ -76,19 +79,26 @@ class ImageContainer extends StatelessWidget {
                   color: AppColor.white.withOpacity(0.8)),
               child: Padding(
                 padding: const EdgeInsets.all(8),
-                child: spotsLeft == 0
+                child: spots == 0
                     ? Center(
-                      child: Text(
+                        child: Text(
                           'UnLimited spots',
-                          style: TextStyle(color: AppColor.primaryColor, fontSize: 10,fontFamily: FontConstants.fontFamily,),
+                          style: TextStyle(
+                            color: AppColor.primaryColor,
+                            fontSize: 10,
+                            fontFamily: FontConstants.fontFamily,
+                          ),
                         ),
-                    )
+                      )
                     : Center(
-                      child: Text(
-                          '$spotsLeft Spots left',
-                          style: TextStyle(fontFamily: FontConstants.fontFamily,color: AppColor.primaryColor, fontSize: 10),
+                        child: Text(
+                          '$spots Spots left',
+                          style: TextStyle(
+                              fontFamily: FontConstants.fontFamily,
+                              color: AppColor.primaryColor,
+                              fontSize: 10),
                         ),
-                    ),
+                      ),
               ),
             ))
       ],

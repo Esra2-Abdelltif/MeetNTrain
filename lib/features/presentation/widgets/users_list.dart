@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:meet_n_train_app/core/utils/color_manager.dart';
 import 'package:meet_n_train_app/features/domain/entities/users_entity.dart';
-import '../../domain/entities/event_entity.dart';
 
 class UsersList extends StatelessWidget {
   const UsersList({Key? key, required this.users}): super(key: key);
   final List<Users> users;
-  final double overlap = 20.0;
   @override
   Widget build(BuildContext context) {
     return Stack(
-        children: List.generate(
-      users.length,
+        children: List.generate(users.length,
       (index) => Padding(
-          padding: EdgeInsets.fromLTRB(index.toDouble() * overlap, 0, 0, 0),
+          padding: EdgeInsets.only(left: index.toDouble() * 20,top:  1,bottom:  1,right: 1),
           child: CircleAvatar(
             radius: 18,
             backgroundColor: AppColor.white,

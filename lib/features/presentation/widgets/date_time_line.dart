@@ -14,55 +14,39 @@ class DateTimeLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     EventsCubit cubit = EventsCubit.get(context);
-    if (cubit.currentDate.compareTo(DateFormat('dd EEE')
-            .format(DateTime.parse(cubit.eventsList[index]))) !=
-        0) {
-      cubit.currentDate =
-          DateFormat('dd MMM').format(DateTime.parse(cubit.eventsList[index]));
-      cubit.showedDate = DateTime.parse(cubit.eventsList[index]);
-      cubit.emit(EventsStateLoaded(event: cubit.events));
-      return TimelineTile(
-        afterLineStyle: LineStyle(color: AppColor.grey, thickness: 1),
-        beforeLineStyle: LineStyle(color: AppColor.grey, thickness: 1),
-        indicatorStyle: IndicatorStyle(
+    cubit.emit(EventsStateLoaded(event: cubit.eventsCardList));
+    cubit.currentDate = DateFormat('dd MMM').format(DateTime.parse(cubit.eventsdDateList[index]));
+    cubit.showedDate = DateTime.parse(cubit.eventsdDateList[index]);
+    return TimelineTile(
+      afterLineStyle: LineStyle(color: AppColor.grey, thickness: 1),
+      beforeLineStyle: LineStyle(color: AppColor.grey, thickness: 1),
+      indicatorStyle: IndicatorStyle(
+          width: 28,
+          height: 50,
+          indicator: Container(
             width: 28,
-            height: 50,
-            indicator: Container(
-              width: 28,
-
-              decoration: BoxDecoration(
-                  color: AppColor.primaryColor,
-                  borderRadius: BorderRadius.circular(8)),
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        DateFormat('dd')
-                            .format(DateTime.parse(cubit.eventsList[index])),
-                        style: TextStyle( color: AppColor.white, fontSize: 10,fontFamily: FontConstants.fontFamily,),
-                      ),
-                      Text(
+            decoration: BoxDecoration(
+                color: AppColor.primaryColor,
+                borderRadius: BorderRadius.circular(8)),
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Column(
+                  children: [
+                    Text(
+                      DateFormat('dd').format(DateTime.parse(cubit.eventsdDateList[index])),
+                      style: TextStyle( color: AppColor.white, fontSize: 10,fontFamily: FontConstants.fontFamily,),
+                    ),
+                    Text(
                         DateFormat('EEE')
-                            .format(DateTime.parse(cubit.eventsList[index])),
+                            .format(DateTime.parse(cubit.eventsdDateList[index])),
                         style: TextStyle( color: AppColor.white, fontSize: 10,fontFamily: FontConstants.fontFamily,)
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-            )),
-      );
-    } else {
-      return TimelineTile(
-        afterLineStyle: LineStyle(color: AppColor.grey, thickness: 1),
-        beforeLineStyle: LineStyle(color: AppColor.grey, thickness: 1),
-        indicatorStyle:
-            const IndicatorStyle(padding: EdgeInsets.symmetric(horizontal: 4)
-                // color: ColorManager.primary,
-                ),
-      );
-    }
+            ),
+          )),
+    );
   }
 }

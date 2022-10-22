@@ -20,16 +20,32 @@ class _EventsListState extends State<EventsList> {
   ScrollController scrollController = ScrollController();
   RefreshController refreshController =
       RefreshController(initialRefresh: false);
+
+  void _onRefresh() async{
+    // monitor network fetch
+    await Future.delayed(Duration(milliseconds: 1000));
+    // if failed,use refreshFailed()
+    refreshController.refreshCompleted();
+  }
+
+  void _onLoading() async{
+    // monitor network fetch
+    await Future.delayed(Duration(milliseconds: 1000));
+    // if failed,use loadFailed(),if no data return,use LoadNodata()
+ //  widget.eventsList.add((widget.eventsList.length!+1).toInt());
+    if(mounted)
+      setState(() {
+
+      });
+    refreshController.loadComplete();
+  }
+
   @override
   void initState() {
     super.initState();
 
-    scrollController.addListener(() {
-      if (scrollController.position.extentAfter == 0 &&
-          EventsCubit.get(context).isLastPage) {
-        EventsCubit.get(context).getEvent();
-      }
-    });
+    //EventsCubit.get(context).getEvent();
+
   }
 
   @override
